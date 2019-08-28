@@ -66,3 +66,19 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+## 记录
+
+### 一、初始化
+
+1、`npx create-react-app my-react-app`
+
+使用npx命令，快速创建react项目，my-react-app为创建的项目名称
+
+2、在`//github.com`初始化远端工程，将本地新创建的工程与远端工程关联起
+
+`cd my-react-app`
+
+`git remote add origin https://github.com/7986LiChang/my-react-app.git`
+
+如果pull/push不到代码，在gitKraken中强制更新。
