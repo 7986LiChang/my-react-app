@@ -281,30 +281,20 @@ class App extends React.Component{
 }
 
 function Greeting(props) {
-    const isLoggedIn = props.isLoggedIn;
-    if(isLoggedIn){
-        return (
-            <h4>Welcome back!</h4>
-        );
-    }else{
-        return (
-            <h4>Please sign up.</h4>
-        );
-    }
-
+    return (
+        <div>
+            {(props.isLoggedIn) ? <h4>Welcome back!</h4> : <h4>Please sign up.</h4>}
+        </div>
+    );
 }
 
 function LoginButton(props) {
-    if(props.isLoggedIn){
-        return (
-            <button onClick={props.onClick}>Logout</button>
-        );
-    }else{
-        return (
-            <button onClick={props.onClick}>Login</button>
-        );
-    }
-
+    return (
+        //包裹在闭合div中
+        <div>
+            {(props.isLoggedIn) ? <button onClick={props.onClick}>Logout</button> : <button onClick={props.onClick}>Login</button>}
+        </div>
+    );
 }
 
 class LoginControl extends React.Component{
@@ -332,17 +322,13 @@ class LoginControl extends React.Component{
     render() {
         const isLoggedIn = this.state.isLoggedIn;
         let button;
-        if(isLoggedIn){
-            button = <LoginButton
-                onClick={this.handleLogoutClick}
-                isLoggedIn={this.state.isLoggedIn}
-            />
-        }else{
-            button = <LoginButton
-                onClick={this.handleLoginClick}
-                isLoggedIn={this.state.isLoggedIn}
-            />
-        }
+        isLoggedIn ? (button = <LoginButton
+            onClick={this.handleLogoutClick}
+            isLoggedIn={this.state.isLoggedIn}
+        />) : (button = <LoginButton
+            onClick={this.handleLoginClick}
+            isLoggedIn={this.state.isLoggedIn}
+        />);
         return (
             <div>
                 <Greeting isLoggedIn={this.state.isLoggedIn}/>
@@ -352,11 +338,47 @@ class LoginControl extends React.Component{
     }
 }
 
+class Mailbox extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            unReadMessage: ['todo1: eat', 'todo2: dog', 'todo3: sleep']
+        }
+    }
+
+    render() {
+        const unReadMessage = this.state.unReadMessage;
+        let ul = unReadMessage.map((item, index) => {
+            return (
+                <li key={index}>
+                    {item}
+                </li>
+            )
+        });
+        return (
+            <div>
+                <h1>there</h1>
+                {unReadMessage.length &&
+                <div>
+                    <h2>you have {unReadMessage.length}</h2>
+                    <ul>
+                        {ul}
+                    </ul>
+                </div>
+                }
+            </div>
+        );
+    }
+
+
+}
+
 ReactDOM.render(
     <div>
         <Game />
         <App />
         <LoginControl />
+        <Mailbox />
     </div>
     ,
     document.getElementById('root')
