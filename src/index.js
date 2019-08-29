@@ -352,13 +352,9 @@ class Mailbox extends React.Component{
 
     render() {
         const unReadMessage = this.state.unReadMessage;
-        let ul = unReadMessage.map((item, index) => {
-            return (
-                <li key={index}>
-                    {item}
-                </li>
-            )
-        });
+        let listItems = unReadMessage.map((item, index) =>
+                <li key={index}>{item}</li>
+        );
         return (
             <div>
                 <h1>there</h1>
@@ -366,7 +362,7 @@ class Mailbox extends React.Component{
                 <div>
                     <h2>you have {unReadMessage.length}</h2>
                     <ul>
-                        {ul}
+                        {listItems}
                     </ul>
                 </div>
                 }
