@@ -213,3 +213,79 @@ ReactDOM.render(
     <Game />,
     document.getElementById('root')
 );
+
+class Clock extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            date: new Date(),
+            isToggleOn: true
+        };
+        //如果在onClick中直接使用this.handleClick，后面不带()，必须要先进行一次绑定this
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    componentDidMount() {
+        this.timerId = setInterval(() => {
+            this.tick();
+        }, 1000)
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timerId);
+    }
+
+    tick(){
+        this.setState({
+            date: new Date()
+        })
+    }
+
+    handleClick(){
+        //在setState中使用函数，最好不要使用已有的state来更新状态
+        this.setState((state, props) => {
+            return {isToggleOn: !state.isToggleOn}
+        })
+    }
+
+    render() {
+        return (
+            <div>
+                <h4>
+                    It is {this.state.date.toLocaleTimeString()}.
+                </h4>
+                <button onClick={this.handleClick}>
+                    {this.state.isToggleOn ? 'ON' : 'OFF'}
+                </button>
+            </div>
+        );
+    }
+}
+
+class Welcome extends React.Component{
+    render() {
+        return (
+            <div>
+                <h1>
+                    Hello, {this.props.name}
+                </h1>
+                <Clock />
+            </div>
+        );
+    }
+}
+
+class App extends React.Component{
+    render() {
+        return (
+            <div>
+                <Welcome name='li'/>
+            </div>
+        );
+    }
+}
+
+ReactDOM.render(
+    <App />,
+    document.getElementById('test')
+);
