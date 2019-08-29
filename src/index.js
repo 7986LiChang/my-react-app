@@ -182,6 +182,12 @@ class Game extends React.Component {
         let status = `Next player: ${this.state.xIsNext ? 'X' : 'O'}`;
         winner && (status = `Winner: ${winner}`);
 
+        //判断是否是平局，所有格子棋子全部落完，依旧没有胜者
+        let isComplete = current.squares.every((item, index) => {return item;});
+        if(isComplete && !winner){
+            status = `Level the score`;
+        }
+
         return (
             <div className="game">
                 <div className="game-board">
