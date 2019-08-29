@@ -289,6 +289,10 @@ function Greeting(props) {
 }
 
 function LoginButton(props) {
+    // if(props.isLoggedIn){
+    //     return null;
+    // }
+
     return (
         //包裹在闭合div中
         <div>
