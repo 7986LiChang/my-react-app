@@ -90,7 +90,8 @@ class Game extends React.Component {
         this.state = {
             //history记录每一步对应的squares
             history: [{
-                squares: Array(9).fill(null)
+                squares: Array(9).fill(null),
+                lastStep: 'Game start'
             }],
             stepNumber: 0,
             xIsNext: true
@@ -106,8 +107,14 @@ class Game extends React.Component {
             return;
         }
         squares[i] = this.state.xIsNext ? 'X' : 'O';
+        //记录当前点击位置坐标
+        const location = `(${Math.floor(i / 3) + 1}, ${(i % 3) + 1})`;
+        const desc = `${squares[i]} moved to ${location}`;
         this.setState({
-            history: [...history, {squares: squares}],
+            history: [...history, {
+                squares: squares,
+                lastStep: desc
+            }],
             stepNumber: history.length,
             xIsNext: !this.state.xIsNext
         });
@@ -127,7 +134,7 @@ class Game extends React.Component {
 
         //记录跳转到第几步
         const moves = history.map((step, move) => {
-            const desc = move ? `Go to move #${move}` : `Go to game start`;
+            const desc = step.lastStep;
             return (
                 <li key={move}>
                     <button onClick={() => this.jumpTo(move)}>
