@@ -88,7 +88,8 @@ class Game extends React.Component {
                 lastStep: 'Game start'
             }],
             stepNumber: 0,
-            xIsNext: true
+            xIsNext: true,
+            sort: false
         };
     }
 
@@ -121,10 +122,21 @@ class Game extends React.Component {
         })
     }
 
+    toggleSort(){
+        this.setState({
+            sort: !this.state.sort
+        })
+    }
+
     render() {
-        const history = this.state.history;
+        let history = this.state.history;
         const current = history[this.state.stepNumber];
         const winner = calculateWinner(current.squares);
+
+        if(this.state.sort){
+            history = this.state.history.slice();
+            history.reverse();
+        }
 
         //记录跳转到第几步
         const moves = history.map((step, move) => {
@@ -161,6 +173,7 @@ class Game extends React.Component {
                 </div>
                 <div className="game-info">
                     <div>{status}</div>
+                    <button onClick={() => this.toggleSort()}>Sort</button>
                     <ol>{moves}</ol>
                 </div>
             </div>
