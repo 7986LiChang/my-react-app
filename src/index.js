@@ -209,11 +209,6 @@ class Game extends React.Component {
 
 // ========================================
 
-ReactDOM.render(
-    <Game />,
-    document.getElementById('root')
-);
-
 class Clock extends React.Component{
     constructor(props) {
         super(props);
@@ -285,7 +280,84 @@ class App extends React.Component{
     }
 }
 
+function Greeting(props) {
+    const isLoggedIn = props.isLoggedIn;
+    if(isLoggedIn){
+        return (
+            <h4>Welcome back!</h4>
+        );
+    }else{
+        return (
+            <h4>Please sign up.</h4>
+        );
+    }
+
+}
+
+function LoginButton(props) {
+    if(props.isLoggedIn){
+        return (
+            <button onClick={props.onClick}>Logout</button>
+        );
+    }else{
+        return (
+            <button onClick={props.onClick}>Login</button>
+        );
+    }
+
+}
+
+class LoginControl extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            isLoggedIn: false
+        };
+        this.handleLogoutClick = this.handleLogoutClick.bind(this);
+        this.handleLoginClick = this.handleLoginClick.bind(this);
+    }
+
+    handleLoginClick(){
+        this.setState({
+            isLoggedIn: true
+        });
+    }
+
+    handleLogoutClick(){
+        this.setState({
+            isLoggedIn: false
+        })
+    }
+
+    render() {
+        const isLoggedIn = this.state.isLoggedIn;
+        let button;
+        if(isLoggedIn){
+            button = <LoginButton
+                onClick={this.handleLogoutClick}
+                isLoggedIn={this.state.isLoggedIn}
+            />
+        }else{
+            button = <LoginButton
+                onClick={this.handleLoginClick}
+                isLoggedIn={this.state.isLoggedIn}
+            />
+        }
+        return (
+            <div>
+                <Greeting isLoggedIn={this.state.isLoggedIn}/>
+                {button}
+            </div>
+        )
+    }
+}
+
 ReactDOM.render(
-    <App />,
-    document.getElementById('test')
+    <div>
+        <Game />
+        <App />
+        <LoginControl />
+    </div>
+    ,
+    document.getElementById('root')
 );
