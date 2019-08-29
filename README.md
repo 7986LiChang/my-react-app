@@ -1,3 +1,48 @@
+## 记录
+
+### 一、初始化
+
+1、`npx create-react-app my-react-app`
+
+使用npx命令，快速创建react项目，my-react-app为创建的项目名称
+
+2、在`//github.com`初始化远端工程，将本地新创建的工程与远端工程关联起
+
+`cd my-react-app`
+
+`git remote add origin https://github.com/7986LiChang/my-react-app.git`
+
+如果pull/push不到代码，在gitKraken中强制更新。
+
+### 二、功能描述
+
+> 基础功能
+
+1. tic-tac-toe(三连棋)落子逻辑。
+
+2. 2个玩家交替落子，并判断胜负。
+
+3. 记录玩家历史操作步骤。
+
+4. 允许玩家回退到任意一个历史记录。
+
+> 扩展功能
+
+1. 在游戏历史记录列表显示每一步棋的坐标，格式为 (列号, 行号)。
+
+2. 在历史记录列表中加粗显示当前选择的项目。
+
+3. 使用两个循环来渲染出棋盘的格子，而不是在代码里写死（hardcode）。
+
+4. 添加一个可以升序或降序显示历史记录的按钮。
+
+5. 每当有人获胜时，高亮显示连成一线的 3 颗棋子。
+
+6. 当无人获胜时，显示一个平局的消息。
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -67,18 +112,3 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
-## 记录
-
-### 一、初始化
-
-1、`npx create-react-app my-react-app`
-
-使用npx命令，快速创建react项目，my-react-app为创建的项目名称
-
-2、在`//github.com`初始化远端工程，将本地新创建的工程与远端工程关联起
-
-`cd my-react-app`
-
-`git remote add origin https://github.com/7986LiChang/my-react-app.git`
-
-如果pull/push不到代码，在gitKraken中强制更新。
