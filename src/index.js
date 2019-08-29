@@ -135,13 +135,24 @@ class Game extends React.Component {
         //记录跳转到第几步
         const moves = history.map((step, move) => {
             const desc = step.lastStep;
-            return (
-                <li key={move}>
-                    <button onClick={() => this.jumpTo(move)}>
-                        {desc}
-                    </button>
-                </li>
-            )
+            if(move ===this.state.stepNumber){
+                return (
+                    <li key={move}>
+                        <button onClick={() => this.jumpTo(move)}>
+                            <strong>{desc}</strong>
+                        </button>
+                    </li>
+                )
+            }else{
+                return (
+                    <li key={move}>
+                        <button onClick={() => this.jumpTo(move)}>
+                            {desc}
+                        </button>
+                    </li>
+                )
+            }
+
         });
         let status = `Next player: ${this.state.xIsNext ? 'X' : 'O'}`;
         winner && (status = `Winner: ${winner}`);
