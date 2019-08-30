@@ -693,9 +693,10 @@ class ProductTable extends React.Component{
     }
 
     filterData(dataSource, filterText, inStockOnly){
-        let filterData = dataSource.filter((item, index) => {
-            return item.name.indexOf(filterText) !== -1 && ((inStockOnly && item.stocked) || !inStockOnly);
-        }), filterFormatData = this.formatData(filterData);
+        let regExp = new RegExp(`${filterText}`, 'i'),
+            filterData = dataSource.filter((item, index) => {
+                return regExp.test(item.name) && ((inStockOnly && item.stocked) || !inStockOnly);
+            }), filterFormatData = this.formatData(filterData);
         return filterFormatData;
     }
 
