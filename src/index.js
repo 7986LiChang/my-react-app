@@ -663,6 +663,9 @@ class ProductRow extends React.Component{
 class ProductTable extends React.Component{
 
     formatData(dataSource){
+        if(!dataSource.length){
+            return [];
+        }
         let newDataSource = [], categoryArr = [];
         dataSource.forEach((item, index) => {
             if(categoryArr.indexOf(item.category) === -1){
@@ -705,7 +708,6 @@ class ProductTable extends React.Component{
             filterText = this.props.filterText,
             inStockOnly = this.props.inStockOnly,
             filterFormatDataSource = this.filterData(dataSource, filterText, inStockOnly);
-
         return (
             <div>
                 <table>
@@ -716,13 +718,13 @@ class ProductTable extends React.Component{
                         </tr>
                     </thead>
                 </table>
-                {filterFormatDataSource.map((item, index) => {
+                {filterFormatDataSource.length ? filterFormatDataSource.map((item, index) => {
                     return (
                     <div key={index}>
                         <ProductCategoryRow categoryRow={item.category}/>
                         <ProductRow productRowList={item.data}/>
                     </div>)
-                })}
+                }) : <div>暂无搜索结果</div>}
             </div>
         );
     }
@@ -732,7 +734,7 @@ class FilterableProductTable extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            filterText: 'ball',
+            filterText: '',
             inStockOnly: false
         };
         this.handleInputChange = this.handleInputChange.bind(this);
