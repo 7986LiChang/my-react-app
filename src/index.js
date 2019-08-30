@@ -375,10 +375,12 @@ class NameForm extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            value: ''
+            value: '初始',
+            favor: ['lime', 'coconut']
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handleSelect = this.handleSelect.bind(this);
     }
 
     handleChange(event){
@@ -387,8 +389,14 @@ class NameForm extends React.Component{
         })
     }
 
+    handleSelect(event){
+        this.setState({
+            favor: [event.target.value]
+        })
+    }
+
     handleSubmit(event){
-        alert(`提交的名字是${this.state.value}`);
+        alert(`提交的名字是${this.state.value}, 喜欢的风味是${this.state.favor}`);
         event.preventDefault();
     }
 
@@ -399,6 +407,22 @@ class NameForm extends React.Component{
                     名字：
                     <input type="text" value={this.state.value} onChange={this.handleChange}/>
                 </label>
+                <br/>
+                <label>
+                    文章：
+                    <textarea value={this.state.value} onChange={this.handleChange} />
+                </label>
+                <br/>
+                <label>
+                    喜欢的风味：
+                    <select value={this.state.favor} onChange={this.handleSelect} multiple={true}>
+                        <option value="grapefruit">葡萄柚</option>
+                        <option value="lime">酸橙</option>
+                        <option value="coconut">椰子</option>
+                        <option value="mango">芒果</option>
+                    </select>
+                </label>
+                <br/>
                 <input type="submit" value='提交'/>
             </form>
         );
