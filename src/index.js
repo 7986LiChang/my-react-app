@@ -602,12 +602,25 @@ class Calculator extends React.Component{
 }
 
 class SearchBar extends React.Component{
+    constructor(props){
+        super(props);
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleCheckChange = this.handleCheckChange.bind(this);
+    }
+
+    handleInputChange(event){
+        this.props.handleInputChange(event.target.value);
+    }
+
+    handleCheckChange(event){
+        this.props.handleCheckChange(event.target.checked);
+    }
     render() {
         return (
             <div>
-                <input type="text" placeholder='Search...' className='search-input' value={this.props.filterText}/>
+                <input type="text" placeholder='Search...' className='search-input' value={this.props.filterText} onChange={this.handleInputChange}/>
                 <br/>
-                <input type="checkbox" checked={this.props.inStockOnly}/>
+                <input type="checkbox" checked={this.props.inStockOnly} onChange={this.handleCheckChange}/>
                 <span>Only show products in stock</span>
             </div>
         );
@@ -720,7 +733,21 @@ class FilterableProductTable extends React.Component{
         this.state = {
             filterText: 'ball',
             inStockOnly: false
-        }
+        };
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleCheckChange = this.handleCheckChange.bind(this);
+    }
+
+    handleInputChange(value){
+        this.setState({
+            filterText: value
+        })
+    }
+
+    handleCheckChange(value){
+        this.setState({
+            inStockOnly: value
+        })
     }
 
     render() {
@@ -729,6 +756,8 @@ class FilterableProductTable extends React.Component{
                 <SearchBar
                     filterText={this.state.filterText}
                     inStockOnly={this.state.inStockOnly}
+                    handleInputChange={this.handleInputChange}
+                    handleCheckChange={this.handleCheckChange}
                 />
                 <ProductTable
                     tableData={this.props.dataSource}
