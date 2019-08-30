@@ -376,11 +376,14 @@ class NameForm extends React.Component{
         super(props);
         this.state = {
             value: '初始',
-            favor: ['lime', 'coconut']
+            favor: ['lime', 'coconut'],
+            isGoing: true,
+            numberOfGuests: 2
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSelect = this.handleSelect.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
     }
 
     handleChange(event){
@@ -392,6 +395,16 @@ class NameForm extends React.Component{
     handleSelect(event){
         this.setState({
             favor: [event.target.value]
+        })
+    }
+
+    handleInputChange(event){
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+
+        this.setState({
+            [name]: value
         })
     }
 
@@ -423,6 +436,17 @@ class NameForm extends React.Component{
                     </select>
                 </label>
                 <br/>
+                <input type="file"/>
+                <br/>
+                <label>
+                    参与：
+                    <input type="checkbox" name="isGoing" checked={this.state.isGoing} onChange={this.handleInputChange}/>
+                </label>
+                <br/>
+                <label>
+                    来宾人数：
+                    <input type="number" name="numberOfGuests" value={this.state.numberOfGuests} onChange={this.handleInputChange}/>
+                </label>
                 <input type="submit" value='提交'/>
             </form>
         );
