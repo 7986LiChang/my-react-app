@@ -260,11 +260,8 @@ class Clock extends React.Component{
 class Welcome extends React.Component{
     render() {
         return (
-            <div>
-                <h1>
-                    Hello, {this.props.name}
-                </h1>
-                <Clock />
+            <div className={`FancyBorder FancyBorder-${this.props.color}`}>
+                {this.props.children}
             </div>
         );
     }
@@ -274,7 +271,10 @@ class App extends React.Component{
     render() {
         return (
             <div>
-                <Welcome name='li'/>
+                <Welcome color="blue">
+                    <h1>Welcome li!</h1>
+                </Welcome>
+                <Clock />
             </div>
         );
     }
