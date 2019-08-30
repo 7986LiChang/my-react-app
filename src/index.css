@@ -60,3 +60,20 @@ ol, ul {
 .FancyBorder-blue{
     border-color: blue;
 }
+
+.ChatPane{
+    border: 1px solid yellow;
+    display: flex;
+    flex-direction: row;
+}
+
+.ChatPane-left{
+    width: 100px;
+    background-color: cadetblue;
+}
+
+.ChatPane-right{
+    flex: 1;
+    background-color: antiquewhite;
+}
+

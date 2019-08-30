@@ -261,19 +261,57 @@ class Welcome extends React.Component{
     render() {
         return (
             <div className={`FancyBorder FancyBorder-${this.props.color}`}>
+                <p>{this.props.name}</p>
                 {this.props.children}
             </div>
         );
     }
 }
 
+function Contact(props) {
+    return (
+        <ul>
+            <li>todo 1</li>
+            <li>todo 2</li>
+        </ul>
+    )
+}
+
+function Content(props) {
+    return (
+        <div>
+            {props.message}
+        </div>
+    );
+}
+
+function ChatPane(props){
+    return (
+        <div className={'ChatPane'}>
+            <div className={'ChatPane-left'}>
+                {props.left}
+            </div>
+            <div className={'ChatPane-right'}>
+                {props.right}
+            </div>
+        </div>
+    );
+}
+
 class App extends React.Component{
     render() {
         return (
             <div>
-                <Welcome color="blue">
+                <Welcome
+                    color="blue"
+                    name="这里是欢迎信息"
+                >
                     <h1>Welcome li!</h1>
                 </Welcome>
+                <ChatPane
+                    left={<Contact />}
+                    right={<Content message='这里是内容'/>}
+                />
                 <Clock />
             </div>
         );
