@@ -77,3 +77,14 @@ ol, ul {
     background-color: antiquewhite;
 }
 
+.filter-product-table{
+    margin: 20px 0 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.search-input{
+    border: 1px solid #ccc;
+    width: 100%;
+}
+

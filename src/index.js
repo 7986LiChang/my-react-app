@@ -601,10 +601,162 @@ class Calculator extends React.Component{
     }
 }
 
+class SearchBar extends React.Component{
+    render() {
+        return (
+            <div>
+                <input type="text" placeholder='Search...' className='search-input' value={this.props.filterText}/>
+                <br/>
+                <input type="checkbox" checked={this.props.inStockOnly}/>
+                <span>Only show products in stock</span>
+            </div>
+        );
+    }
+}
+
+class ProductCategoryRow extends React.Component{
+    render() {
+        return (
+            <table>
+                <thead>
+                    <tr>
+                        <th>{this.props.categoryRow}</th>
+                    </tr>
+                </thead>
+            </table>
+        );
+    }
+}
+
+class ProductRow extends React.Component{
+    render() {
+        return (
+            <table>
+                <tbody>
+                    {this.props.productRowList.map((item, index) => {
+                        return (
+                            <tr key={index}>
+                                <td>{item.name}</td>
+                                <td>{item.price}</td>
+                            </tr>
+                        );
+                    })}
+                </tbody>
+            </table>
+        );
+    }
+}
+
+class ProductTable extends React.Component{
+
+    formatData(dataSource){
+        let newDataSource = [], categoryArr = [];
+        dataSource.forEach((item, index) => {
+            if(categoryArr.indexOf(item.category) === -1){
+                categoryArr.push(item.category);
+                newDataSource.push({
+                    category: item.category,
+                    data: [{
+                        price: item.price,
+                        name: item.name,
+                        stocked: item.stocked
+                    }]
+                })
+            }else{
+                newDataSource.some((dataItem, index) => {
+                    if(dataItem.category === item.category){
+                        dataItem.data.push({
+                            price: item.price,
+                            name: item.name,
+                            stocked: item.stocked
+                        });
+                        return true;
+                    }
+                    return false;
+                })
+            }
+        });
+        return newDataSource;
+    }
+
+    filterData(dataSource, filterText, inStockOnly){
+        let filterData = dataSource.filter((item, index) => {
+            return item.name.indexOf(filterText) !== -1 && ((inStockOnly && item.stocked) || !inStockOnly);
+        }), filterFormatData = this.formatData(filterData);
+        return filterFormatData;
+    }
+
+    render() {
+        const dataSource = this.props.tableData,
+            filterText = this.props.filterText,
+            inStockOnly = this.props.inStockOnly,
+            filterFormatDataSource = this.filterData(dataSource, filterText, inStockOnly);
+
+        return (
+            <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                </table>
+                {filterFormatDataSource.map((item, index) => {
+                    return (
+                    <div key={index}>
+                        <ProductCategoryRow categoryRow={item.category}/>
+                        <ProductRow productRowList={item.data}/>
+                    </div>)
+                })}
+            </div>
+        );
+    }
+}
+
+class FilterableProductTable extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            filterText: 'ball',
+            inStockOnly: false
+        }
+    }
+
+    render() {
+        return (
+            <div className='filter-product-table'>
+                <SearchBar
+                    filterText={this.state.filterText}
+                    inStockOnly={this.state.inStockOnly}
+                />
+                <ProductTable
+                    tableData={this.props.dataSource}
+                    filterText={this.state.filterText}
+                    inStockOnly={this.state.inStockOnly}
+                />
+            </div>
+        );
+    }
+}
+
+//通过defaultProps向FilterableProductTable传入外部数据
+FilterableProductTable.defaultProps = {
+    dataSource: [
+        {category: "Sporting Goods", price: "$49.99", stocked: true, name: "Football"},
+        {category: "Sporting Goods", price: "$9.99", stocked: true, name: "Baseball"},
+        {category: "Sporting Goods", price: "$29.99", stocked: false, name: "Basketball"},
+        {category: "Electronics", price: "$99.99", stocked: true, name: "iPod Touch"},
+        {category: "Electronics", price: "$399.99", stocked: false, name: "iPhone 5"},
+        {category: "Electronics", price: "$199.99", stocked: true, name: "Nexus 7"}
+    ]
+};
+
 ReactDOM.render(
     <div>
         <Game />
         <Calculator />
+        <FilterableProductTable />
         <App />
         <LoginControl />
         <Mailbox />
