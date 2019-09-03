@@ -7,7 +7,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {observable, autorun, computed, action, configure} from "mobx";
-import {observer} from 'mobx-react';
+import {inject, observer, Provider} from 'mobx-react';
 
 const value = observable.box(0);
 const number = observable.box(100);
@@ -96,7 +96,8 @@ const plus = computed(() => num.get() > 0);
  //使用observer修饰无状态组件
  const AllNum = observer((props) => <div>num1 + num2 = {props.store.total}</div>);
 
- const Main = observer((props) => (
+ const Main = inject('persons')(observer((props) => (
+
      <div>
          <p>num1 = {props.store.num1}</p>
          <p>num2 = {props.store.num2}</p>
@@ -104,17 +105,41 @@ const plus = computed(() => num.get() > 0);
              <button onClick={props.store.addNum1}>num1 + 1</button>
              <button onClick={props.store.addNum2}>num2 + 1</button>
          </div>
+         <ul>
+             {props.persons.value.length && props.persons.value.map((item, index) => <li key={index}>{item.name}: {item.age}</li>)}
+         </ul>
      </div>
- ));
+ )));
+
+ const persons = observable.box([{
+     name: 'li',
+     age: '24'
+ }, {
+     name: 'sun',
+     age: '26'
+ }]);
+
+ console.log(persons);
 
  @observer
- class App extends React.Component{
+ class MyPerson extends React.Component{
      render() {
          return (
              <div>
                  <Main store={newState}/>
                  <AllNum store={newState}/>
              </div>
+         );
+     }
+ }
+
+ @observer
+ class App extends React.Component{
+     render() {
+         return (
+             <Provider persons={persons}>
+                 <MyPerson />
+             </Provider>
          );
      }
  }
