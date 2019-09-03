@@ -32,19 +32,25 @@ class TodoData {
         }
     ];
 
+    @observable todoHisLen = 3;
+
     //添加todo
     @action addTodo(title){
-        const len = this.todos.length;
+        this.todoHisLen++;
         this.todos.push({
-            id: len + 1,
+            id: this.todoHisLen,
             title: title,
             finished: false
-        })
+        });
     }
 
     //完成todo
     @action finishTodo(todo){
         todo.finished = !todo.finished;
+    }
+
+    @action deleteTodo(todo){
+        this.todos.remove(todo);
     }
 
     //返回计算未完成的数量
@@ -86,6 +92,7 @@ class TodoView extends React.Component{
                     />
                     {todo.title}
                 </label>
+                <button onClick={() => {this.props.todoList.deleteTodo(todo)}}>删除</button>
             </li>
         );
     }
