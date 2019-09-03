@@ -89,3 +89,9 @@ ol, ul {
     width: 100%;
 }
 
+.todo-add-input{
+    border: 1px solid #ccc;
+    width: 80%;
+    height: 20px;
+    line-height: 20px;
+}

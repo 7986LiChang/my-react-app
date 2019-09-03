@@ -8,6 +8,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {observable, computed, configure, action} from "mobx";
 import {inject, observer, Provider} from "mobx-react";
+import './index.css';
 
 //开启严格模式，只有在action中才能修改观测量state的值
 configure({enforceActions: 'always'});
@@ -31,6 +32,17 @@ class TodoData {
         }
     ];
 
+    //添加todo
+    @action addTodo(title){
+        const len = this.todos.length;
+        this.todos.push({
+            id: len + 1,
+            title: title,
+            finished: false
+        })
+    }
+
+    //完成todo
     @action finishTodo(todo){
         todo.finished = !todo.finished;
     }
@@ -80,6 +92,35 @@ class TodoView extends React.Component{
 
 }
 
+@inject('todoList')
+@observer
+class ToDoAdd extends React.Component{
+    //将input中的输入值设为内部state，并转为可观测的量
+    @observable value = '';
+
+    //定义修改、添加的动作
+    @action change = (e) => {
+        this.value = e.target.value;
+    };
+
+    @action add = (e) => {
+        if(!this.value){
+            alert('任务名称不能为空');
+            return;
+        }
+        this.props.todoList.addTodo(this.value);
+        this.value = '';
+    };
+    render() {
+        return (
+            <div className='todo-add'>
+                <input type="text" className='todo-add-input' onChange={this.change} value={this.value}/>
+                <button onClick={this.add}>添加</button>
+            </div>
+        );
+    }
+}
+
 class ToDoApp extends React.Component{
     render() {
         return (
@@ -98,6 +139,7 @@ class App extends React.Component{
     render() {
         return (
             <Provider todoList={todoList}>
+                <ToDoAdd />
                 <ToDoApp />
             </Provider>
         );
