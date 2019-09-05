@@ -8,7 +8,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {observable, computed, configure, action} from "mobx";
 import {inject, observer, Provider} from "mobx-react";
+import {Tabs} from '@jdcfe/yep-react';
 import './index.css';
+const {TabPanel} = Tabs;
 
 //开启严格模式，只有在action中才能修改观测量state的值
 configure({enforceActions: 'always'});
@@ -141,6 +143,54 @@ class ToDoApp extends React.Component{
 //初始化数据结构state管理
 const todoList = new TodoData();
 
+class MyTabs extends React.Component{
+    render() {
+        return (
+            <Tabs
+                onChange={index => {console.log(index)}}
+                distanceToChangeTab={100}
+            >
+                <TabPanel tab='li1'>
+                    <div style={
+                        {   height: 150,
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            backgroundColor: '#ccc'
+                        }
+                    }>
+                        1111部分内容
+                    </div>
+                </TabPanel>
+                <TabPanel tab="yan2">
+                    <div style={
+                        {   height: 150,
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            backgroundColor: '#fff'
+                        }
+                    }>
+                        2222部分内容
+                    </div>
+                </TabPanel>
+                <TabPanel tab="hua3">
+                    <div style={
+                        {   height: 150,
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            backgroundColor: '#789021'
+                        }
+                    }>
+                        333部分内容
+                    </div>
+                </TabPanel>
+            </Tabs>
+        );
+    }
+}
+
 //在Provider中写入todoList作为store，然后在各子组件中通过inject引入
 class App extends React.Component{
     render() {
@@ -148,6 +198,7 @@ class App extends React.Component{
             <Provider todoList={todoList}>
                 <ToDoAdd />
                 <ToDoApp />
+                <MyTabs />
             </Provider>
         );
     }
