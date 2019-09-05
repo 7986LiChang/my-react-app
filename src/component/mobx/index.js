@@ -5,7 +5,6 @@
  * @create: 2019-09-02 11:17
  */
 import React from 'react';
-import ReactDOM from 'react-dom';
 import {observable, autorun, computed, action, configure} from "mobx";
 import {inject, observer, Provider} from 'mobx-react';
 
@@ -144,8 +143,4 @@ const plus = computed(() => num.get() > 0);
      }
  }
 
-
- ReactDOM.render(
-     <App />,
-     document.getElementById('root')
- );
+ export default App;

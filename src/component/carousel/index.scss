@@ -1,0 +1,21 @@
+/**
+ * @file index1.scss
+ * @author: cdlichang1
+ * @describe: 轮播图
+ * @create: 2019-09-05 20:08 
+ */
+.carousel{
+  position: relative;
+  img{
+    max-width: 100%;
+  }
+}
+
+.Yep-carousel-demo-page{
+  position: absolute;
+  right: 0;
+  bottom: 20px;
+  background-color: #cccccc;
+  padding: 2px;
+  border-radius: 5px;
+}

@@ -5,10 +5,9 @@
  * @create: 2019-09-03 09:58
  */
 import React from 'react';
-import ReactDOM from 'react-dom';
 import {observable, computed, configure, action} from "mobx";
 import {inject, observer, Provider} from "mobx-react";
-import './index.css';
+import './index.scss';
 
 //开启严格模式，只有在action中才能修改观测量state的值
 configure({enforceActions: 'always'});
@@ -142,7 +141,7 @@ class ToDoApp extends React.Component{
 const todoList = new TodoData();
 
 //在Provider中写入todoList作为store，然后在各子组件中通过inject引入
-class App extends React.Component{
+export default class TodoListApp extends React.Component{
     render() {
         return (
             <Provider todoList={todoList}>
@@ -152,8 +151,3 @@ class App extends React.Component{
         );
     }
 }
-
-ReactDOM.render(
-    <App />,
-    document.getElementById('root')
-);

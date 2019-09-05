@@ -6,7 +6,6 @@
  */
 
 import React from "react";
-import ReactDOM from "react-dom";
 
 class SubCounter extends React.Component {
     componentWillMount(){
@@ -48,7 +47,7 @@ class SubCounter extends React.Component {
     }
 }
 
-class Counter extends React.Component {
+export default class Counter extends React.Component {
     static defaultProps = {
         //1、加载默认属性
         name: 'sls',
@@ -101,8 +100,3 @@ class Counter extends React.Component {
         )
     }
 }
-
-ReactDOM.render(
-    <Counter />,
-    document.getElementById('root')
-);
