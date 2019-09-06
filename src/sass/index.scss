@@ -1,0 +1,318 @@
+/**
+ * @file index.css
+ * @author: cdlichang1
+ * @describe: 首页
+ * @create: 2019-09-06 10:45
+ */
+/*
+ * 禁止触摸并按住触摸的目标时，显示系统默认菜单
+ */
+.ban-show-menu {
+    -webkit-touch-callout: none;
+}
+
+/*
+* 用户不能选择元素中的任何内容
+*/
+.user-ban-select {
+    user-select: none;
+}
+
+.user-can-select {
+    user-select: auto;
+}
+
+/*
+ * 去除input number边框三角形样式
+ */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+/*
+ * -webkit-appearance该属性主要用来消除浏览器默认样式
+ */
+input, button, select, textarea, a {
+    -webkit-appearance: none;
+}
+a, a:active {
+    outline: none;
+    text-decoration: none;
+}
+textarea {
+    resize: none;
+}
+input, button, textarea, a {
+    border: none;
+}
+.clearFix {
+    zoom: 1;
+    display: block;
+    _height: 1px;
+}
+
+.clearFix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.clearFlow {
+    overflow: hidden;
+    *zoom: 1;
+}
+
+/*
+ *  ul 列表默认样式
+**/
+ul {
+    margin: 0;
+    padding: 0;
+    li{
+        list-style-type: none;
+        padding: 0;
+    }
+}
+.ul-li-float li {
+    float: left;
+}
+
+/*
+ *  边框盒
+**/
+.border-box {
+    box-sizing: border-box;
+}
+
+/*
+ *  内容盒
+**/
+.content-box {
+    box-sizing: content-box;
+}
+
+/*
+ *  弹性盒模型
+**/
+.flexible-box {
+    display: flex;
+}
+
+.flexible-box-h {
+    display: flex;
+    flex-direction: column;
+}
+//垂直居中布局
+  .flexible-vertical-center-box {
+      display: flex;
+      align-items: center;
+  }
+
+//水平居中布局
+  .flexible-horizontal-center-box {
+      display: flex;
+      justify-content: center;
+  }
+
+//水平垂直居中布局
+  .flexible-center-box{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+/*
+ *  弹性盒模型-自适应
+**/
+.adaptive-box-flex {
+    flex: 1;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.vertical-align-t {
+    vertical-align: top;
+}
+
+.vertical-align-m {
+    vertical-align: middle;
+}
+
+.vertical-align-b {
+    vertical-align: bottom;
+}
+
+.margin-lr-auto {
+    margin: 0 auto;
+}
+
+.pos-relative {
+    position: relative;
+}
+
+.pos-absolute {
+    position: absolute;
+}
+
+.pos-fixed {
+    position: fixed;
+}
+
+.align-left {
+    text-align: left;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.display-none {
+    display: none;
+}
+
+.display-none-important {
+    display: none !important;
+}
+
+.display-block {
+    display: block;
+}
+
+.display-block-important {
+    display: block !important;
+}
+
+.display-inline-block {
+    display: inline-block;
+}
+
+.display-inline-block-important {
+    display: inline-block !important;
+}
+
+.display-inline {
+    display: inline;
+}
+
+.display-inline-important {
+    display: inline !important;
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.over-hidden {
+    overflow: hidden;
+}
+
+.over-auto {
+    overflow: auto;
+}
+
+.over-auto-hidden-x {
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.over-auto-hidden-y {
+    overflow: auto;
+    overflow-y: hidden;
+}
+
+.over-x-auto {
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.over-y-auto {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/*
+ *  单行省略与多行省略
+**/
+.text-ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.text-ellipsis-2 {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    /* autoprefixer: ignore next */
+    -webkit-box-orient: vertical;
+}
+
+/*
+ *  透明度
+**/
+.opacity-0 {
+    opacity: 0;
+    filter: alpha(opacity=0);
+    *zoom: 1;
+}
+
+.opacity-20 {
+    opacity: 0.2;
+    filter: alpha(opacity=20);
+    *zoom: 1;
+}
+
+.opacity-50 {
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    *zoom: 1;
+}
+
+.opacity-60 {
+    opacity: 0.6;
+    filter: alpha(opacity=60);
+    *zoom: 1;
+}
+
+.opacity-80 {
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+    *zoom: 1;
+}
+
+.opacity-100 {
+    opacity: 1;
+    filter: alpha(opacity=100);
+    *zoom: 1;
+}
+
+body{
+    background-color: #333;
+    font-size: 14px;
+}
+
+p{
+    margin: 0;
+}
+
+#app {
+    max-width: 750px;
+    margin: 0 auto;
+}
+

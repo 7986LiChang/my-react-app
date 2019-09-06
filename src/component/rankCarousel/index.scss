@@ -1,0 +1,75 @@
+/**
+ * @file index.scss
+ * @author: cdlichang1
+ * @describe: 排行榜轮播图样式
+ * @create: 2019-09-05 20:45 
+ */
+.rank-carousel-part{
+  margin: 10px;
+  color: #333333;
+}
+.rank-carousel-wrap{
+  width: 100%;
+  background: white;
+  border-radius: 5px;
+  img{
+    max-width: 105px;
+  }
+}
+.rank-carousel-title{
+  padding: 10px 20px;
+  background: #cccccc;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  .rank-carousel-name{
+    margin-left: -10px;
+  }
+  .rank-carousel-total{
+    color: #999999;
+    font-size: 12px;
+    border: 1px solid #999999;
+    border-radius: 20px;
+    padding: 1px 4px;
+  }
+}
+
+.rank-carousel-content{
+  padding: 20px;
+  ul{
+    li{
+      width: 33.3%;
+      float: left;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}
+
+.rank-carousel-img{
+  position: relative;
+
+}
+.rank-carousel-purchase{
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  background: #ededed;
+  border: 1px solid #dddddd;
+  border-radius: 10px;
+}
+
+.rank-carousel-discount{
+  background: #666666;
+  border-radius: 20px;
+  padding: 5px 10px;
+  color: white;
+  font-size: 12px;
+}
+
+.rank-carousel-info{
+  p{
+    padding: 8px 0 5px 0;
+  }
+}
