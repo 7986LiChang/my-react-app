@@ -7,13 +7,15 @@
 import React from 'react';
 import RankCarousel from "./component/rankCarousel";
 // import Header from "./component/header";
+import MyHook from './component/hook';
 
 export default class App extends React.Component{
     render() {
         return (
             <div>
                 {/*<Header />*/}
-                <RankCarousel />
+                {/*<RankCarousel />*/}
+                <MyHook />
             </div>
         );
     }

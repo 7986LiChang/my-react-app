@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试函数节流throttle与防抖debounce</title>
+</head>
+<body>
+    <img src="//m.360buyimg.com/babel/jfs/t23224/35/1026004507/74414/35929bac/5b4d885bN0cdaa9f4.jpg" alt="">
+    <img src="//m.360buyimg.com/babel/jfs/t21421/47/1859879985/100913/f5dd5cb5/5b3caa69N4c7a4999.jpg" alt="">
+    <img src="//img1.360buyimg.com/pop/jfs/t23260/244/889866376/102314/ef6393ec/5b46cb8cN1804aa98.jpg" alt="">
+</body>
+<script src="http://libs.baidu.com/jquery/1.9.1/jquery.js"></script>
+<script type="text/javascript">
+    $(window).on('scroll', function () {
+        let pageHeight = $('body').height(),
+            scrollTop = $(window).scrollTop(),
+            winHeight = $(window).height(),
+            thresold = pageHeight - scrollTop - winHeight;
+        if(thresold > -100 && thresold <= 20) {
+            console.log('end');
+        }
+    })
+</script>
+</html>
