@@ -5,9 +5,10 @@
  * @create: 2019-09-05 20:11
  */
 import React from 'react';
-import RankCarousel from "./component/rankCarousel";
+// import RankCarousel from "./component/rankCarousel";
 // import Header from "./component/header";
-import MyHook from './component/hook';
+// import MyHook from './component/hook';
+import AutoFocusTextInput from './component/ref';
 
 export default class App extends React.Component{
     render() {
@@ -15,7 +16,8 @@ export default class App extends React.Component{
             <div>
                 {/*<Header />*/}
                 {/*<RankCarousel />*/}
-                <MyHook />
+                {/*<MyHook />*/}
+                <AutoFocusTextInput />
             </div>
         );
     }
