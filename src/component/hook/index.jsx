@@ -12,9 +12,10 @@ function MyHook() {
     const [fruit, setFruit] = useState('banana');
     const [todo, setTodo] = useState([{text: 'learn hooks'}]);
 
+    // 每次render渲染后都会执行，包括第1次。传入空数组表示只执行1次。
     useEffect(() => {
         document.title = `you click ${count} times`
-    });
+    }, []);
 
     return (
         <div>
@@ -32,4 +33,23 @@ function MyHook() {
     );
 }
 
-export default MyHook;
+const Counter = ({initialCount}) => {
+    // 从函数组件props中传入
+    // 内部使用state
+    const [count, setCount] = useState(initialCount);
+
+    return (
+        <>
+            Count: {count}
+            <button onClick={() => setCount(initialCount)}>Reset</button>
+            <button onClick={() => setCount(prevCount => prevCount - 1)}>-</button>
+            <button onClick={() => setCount(prevCount => prevCount + 1)}>+</button>
+        </>
+    )
+};
+
+
+export{
+    MyHook,
+    Counter
+} ;
