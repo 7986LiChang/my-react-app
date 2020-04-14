@@ -15,7 +15,7 @@ function MyHook() {
     // 每次render渲染后都会执行，包括第1次。传入空数组表示只执行1次。
     useEffect(() => {
         document.title = `you click ${count} times`
-    }, []);
+    });
 
     return (
         <div>
