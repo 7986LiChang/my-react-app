@@ -15,7 +15,8 @@ import UseRefInFunction from "./component/refsAndDom/refsInFunction";
 // import RefCallback from './component/refsAndDom/refsCallback';
 import RefsCallbackDelivery from './component/refsAndDom/refsCallbackDelivery';
 // import {UseRefTextInputWithFocusButton} from './component/hook/useRef';
-import {UseImperativeHandle} from './component/hook/useImperativeHandle';
+// import {UseImperativeHandle} from './component/hook/useImperativeHandle';
+import {UseDebugValue} from './component/hook/useDebugValue';
 
 export default class App extends React.Component{
     render() {
@@ -32,7 +33,8 @@ export default class App extends React.Component{
                 {/*<RefCallback />*/}
                 <RefsCallbackDelivery />
                 {/*<UseRefTextInputWithFocusButton />*/}
-                <UseImperativeHandle />
+                {/*<UseImperativeHandle />*/}
+                <UseDebugValue />
             </div>
         );
     }
