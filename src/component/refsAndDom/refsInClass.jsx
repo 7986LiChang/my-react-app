@@ -13,6 +13,7 @@ class AutoFocusTextInput extends React.Component{
     }
 
     componentDidMount() {
+        // ref属性属于自定义组件，其current值为组件的挂载实例。
         this.textInput.current.focusTextInput();
     }
 
@@ -32,6 +33,7 @@ class CustomTextInput extends React.Component{
     }
 
     focusTextInput(){
+        // ref属性属于html元素。为DOM元素添加ref。.current属性就对应DOM元素
         this.textInput.current.focus();
     }
 

@@ -10,7 +10,9 @@ import React from 'react';
 import {MyHook, Counter} from './component/hook/useStateOrUseEffect';
 import {CounterUseContext} from './component/hook/useContext';
 import {CounterUseReducer} from './component/hook/useReducer';
-import AutoFocusTextInput from './component/ref';
+// import AutoFocusTextInput from './component/refsAndDom/refsInClass';
+import UseRefInFunction from "./component/refsAndDom/refsInFunction";
+import RefCallback from './component/refsAndDom/refsCallback';
 
 export default class App extends React.Component{
     render() {
@@ -19,10 +21,12 @@ export default class App extends React.Component{
                 {/*<Header />*/}
                 {/*<RankCarousel />*/}
                 <MyHook />
-                <AutoFocusTextInput />
+                {/*<AutoFocusTextInput />*/}
                 <Counter initialCount={1}/>
                 <CounterUseContext />
                 <CounterUseReducer initialCount={5} />
+                <UseRefInFunction />
+                <RefCallback />
             </div>
         );
     }
