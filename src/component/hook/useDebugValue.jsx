@@ -4,7 +4,7 @@
  * @describe: 在自定义hook中，在react开发者工具中在这个hook旁边显示标签
  * @create: 2020-04-15 17:49
  */
-import React, {useRef, useState, useDebugValue} from "react";
+import React, {useState, useDebugValue} from "react";
 
 // 定义 自定义hook MyOwnClick
 const useMwnClick = () => {
