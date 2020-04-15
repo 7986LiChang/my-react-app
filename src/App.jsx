@@ -14,6 +14,7 @@ import {CounterUseReducer} from './component/hook/useReducer';
 import UseRefInFunction from "./component/refsAndDom/refsInFunction";
 // import RefCallback from './component/refsAndDom/refsCallback';
 import RefsCallbackDelivery from './component/refsAndDom/refsCallbackDelivery';
+import {UseRefTextInputWithFocusButton} from './component/hook/useRef';
 
 export default class App extends React.Component{
     render() {
@@ -29,6 +30,7 @@ export default class App extends React.Component{
                 <UseRefInFunction />
                 {/*<RefCallback />*/}
                 <RefsCallbackDelivery />
+                <UseRefTextInputWithFocusButton />
             </div>
         );
     }

@@ -6,10 +6,21 @@
  */
 import React, {useRef} from 'react';
 
-const useRefTextInputWithFocusButton = () => {
+const UseRefTextInputWithFocusButton = () => {
+    // 创建ref，获取DOM节点
+    const inputEl = useRef(null);
+    const onButtonClick = () => {
+        inputEl.current.focus();
+    };
 
+    return (
+        <div>
+            <input type="text" ref={inputEl}/>
+            <button onClick={onButtonClick}>focus useRef</button>
+        </div>
+    )
 };
 
 export {
-    useRefTextInputWithFocusButton
+    UseRefTextInputWithFocusButton
 }
