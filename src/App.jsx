@@ -12,7 +12,8 @@ import {CounterUseContext} from './component/hook/useContext';
 import {CounterUseReducer} from './component/hook/useReducer';
 // import AutoFocusTextInput from './component/refsAndDom/refsInClass';
 import UseRefInFunction from "./component/refsAndDom/refsInFunction";
-import RefCallback from './component/refsAndDom/refsCallback';
+// import RefCallback from './component/refsAndDom/refsCallback';
+import RefsCallbackDelivery from './component/refsAndDom/refsCallbackDelivery';
 
 export default class App extends React.Component{
     render() {
@@ -26,7 +27,8 @@ export default class App extends React.Component{
                 <CounterUseContext />
                 <CounterUseReducer initialCount={5} />
                 <UseRefInFunction />
-                <RefCallback />
+                {/*<RefCallback />*/}
+                <RefsCallbackDelivery />
             </div>
         );
     }
